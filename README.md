@@ -78,8 +78,7 @@ flowchart TB
 | Dataset | Description | Role |
 |---|---|---|
 | [LLM-generated News](https://github.com/navid-aub/News-Dataset) | 3,000 news articles from 9 outlets across 6 topics, each paired with LLM-generated versions | Human vs LLM text |
-| [CoNLL-2003](https://huggingface.co/datasets/eriktks/conll2003) | Reuters news annotated with person, organization, location, and miscellaneous entities | Annotator training |
-A topic-stratified sample of 840 matched article pairs is used: 600 for training, 90 for validation, and 150 for testing. Both versions of a story always stay in the same split.
+| [CoNLL-2003](https://huggingface.co/datasets/eriktks/conll2003) | Reuters news annotated with person, organization, location, and miscellaneous entities | Annotator 
 
 ## Models
 
