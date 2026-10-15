@@ -78,7 +78,7 @@ flowchart TB
 | Dataset | Description | Role |
 |---|---|---|
 | [LLM-generated News](https://github.com/navid-aub/News-Dataset) | 3,000 news articles from 9 outlets across 6 topics, each paired with LLM-generated versions | Human vs LLM text |
-| [CoNLL-2003](https://huggingface.co/datasets/eriktks/conll2003) | Reuters news annotated with person, organization, location, and miscellaneous entities | Annotator 
+| [CoNLL-2003](https://huggingface.co/datasets/eriktks/conll2003) | Reuters news annotated with person, organization, location, and miscellaneous entities | Annotator training/selection |
 
 ## Models
 
@@ -97,12 +97,15 @@ flowchart TB
 ## Repository Structure
 
 ```
-├── data/          # Dataset sources and silver labels (raw data not tracked)
+├── data/          # Dataset docs only (raw/processed data not tracked, see data/README.md)
 ├── notebooks/     # Colab notebooks, numbered in pipeline order
-├── results/       # Metrics, tables, and figures
-├── reports/       # Proposal, progress update, and final report
+├── reports/       # Proposal, progress update, and final report (not yet added)
 └── README.md
 ```
+
+Checkpoints, metrics, and figures are not stored in this repository. Every notebook writes its outputs
+(datasets, model checkpoints, result tables, plots, logs) to a shared Google Drive folder
+(`IT469-NER-Project`) mounted at run time, so large artifacts never need to go through git.
 
 ## Getting Started
 
@@ -111,7 +114,7 @@ All experiments run in Google Colab. Open the notebooks in order:
 | Notebook | Step |
 |---|---|
 | `01_data_preparation.ipynb` | Clean, sample, and tokenize the LLM News dataset |
-| `02_annotator_selection.ipynb` | Fine-tune annotator candidates on CoNLL-2003 |
+| `02_annotator_selection-bert-base-cased.ipynb`, `02_annotator_selection - roberta-base.ipynb`, `02_annotator_selection - roberta-large.ipynb` | Fine-tune each annotator candidate on CoNLL-2003 (one executed notebook per candidate, archived with its results) |
 | `03_silver_labeling.ipynb` | Annotate human and LLM articles |
 | `04_crf_baseline.ipynb` | Train and evaluate the CRF baseline |
 | `05_main_models.ipynb` | Train and evaluate the main models |

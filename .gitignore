@@ -1,3 +1,7 @@
+# Claude Code local state and project memory (not shared with the team)
+.claude/
+CLAUDE.md
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
