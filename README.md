@@ -122,7 +122,28 @@ All experiments run in Google Colab. Open the notebooks in order:
 
 ## Results
 
-*Coming soon.*
+Full results are still in progress (main transformer models not yet trained). The CRF baseline
+(`04_crf_baseline.ipynb`) is complete:
+
+**2x2 micro F1** (linear-chain CRF, trained once on human text / once on LLM text, each tested on both):
+
+| Trained on \ Tested on | Human test | LLM test |
+|---|---|---|
+| **Human** | 0.853 | 0.869 |
+| **LLM** | 0.805 | 0.871 |
+
+A paired bootstrap (1,000 resamples over the shared test articles, 95% CI) found three of the four
+train/test differences statistically reliable. The standout: a CRF trained only on GPT-3.5 text loses
+**6.7 F1 points** when evaluated on real journalism, while a CRF trained on human text loses almost
+nothing (and even gains slightly) when evaluated on GPT-3.5 text — the human-trained model is the more
+robust one. This tracks with an independent finding from the silver-labeling stage: only ~44% of a
+journalist's entity mentions survive, as an exact string, into GPT-3.5's rewrite of the same story, and
+entity-vocabulary overlap between train and test predicts the size of each F1 gap almost exactly. Full
+breakdown (per-entity-type, bootstrap intervals, feature weights, and the leakage/overfitting checks that
+back these numbers) is in the notebook's saved outputs.
+
+**Baseline-level answer to the project's central question:** at least for a classical feature-based
+model, LLM-generated text is *not* a safe substitute for human-written text as NER training data.
 
 ## Team
 
