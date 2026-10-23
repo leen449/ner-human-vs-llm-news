@@ -154,7 +154,8 @@ model, LLM-generated text is *not* a safe substitute for human-written text as N
 - Shahad Alotaibi
 - Nora Alkhudair
 - Ghalia Alkhaldi
-- Rana Alnajashi 
+- Rana Alnajashi
+
 
 ## Acknowledgments
 
